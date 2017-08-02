@@ -5,7 +5,7 @@ The implementation of the GPU-based Dirichlet Multinomial Mixture model (GPU-DMM
 **Topic Modeling for Short Texts with Auxiliary Word Embeddings.**
 Haoran Wang, Chenliang Li, Zhiqian Zhang, Aixin Sun, Zongyang Ma.
 
-GPUDMM is a simple, fast, and effective topic model for short texts.
+GPU-DMM is a simple, fast, and effective topic model for short texts.
 
 ## Description
 
