@@ -1,9 +1,11 @@
 # GPUDMM
 
-The implementations of the GPUDMM topic models, as described in 2016 SIGIR paper:
+The implementation of the GPUDMM topic models, as described in 2016 SIGIR paper:
 
 **Topic Modeling for Short Texts with Auxiliary Word Embeddings.**
 Haoran Wang, Chenliang Li, Zhiqian Zhang, Aixin Sun, Zongyang Ma.
+
+GPUDMM is a simple, fast, and effective topic model for modeling short texts.
 
 ## Description
 
