@@ -42,7 +42,6 @@ public class RatioGPUDMM {
 	public int numDoc;
 	private double[][] schema;
 	public ArrayList<int[]> docToWordIDList;
-	public String initialFileName;  // we use the same initial for DMM-based model
 	public double[][] phi;
 	private double[] pz;
 	private double[][] pdz;
@@ -465,13 +464,13 @@ public class RatioGPUDMM {
 	public void init_GSDMM() {
 //		 schemaMap = loadSchema("E:\\pythonWorkspace\\GPUBTM\\data\\qa_word_similarity.txt",threshold);
 		schemaMap = loadSchema(similarityFileName, threshold);
-		loadInitialStatus(initialFileName);
+//		loadInitialStatus(initialFileName);
 
 		for (int d = 0; d < docToWordIDList.size(); d++) {
 			int[] termIDArray = docToWordIDList.get(d);
 			int topic = assignmentList[d];
-//			 int topic = rg.nextInt(numTopic);
-//			 assignmentList[d] = topic;
+			int topic = rg.nextInt(numTopic);
+			assignmentList[d] = topic;
 			normalCount(topic, termIDArray, +1);
 		}
 		System.out.println("finish init_MU!");
@@ -729,8 +728,6 @@ public class RatioGPUDMM {
 		
 		for (int round = 1; round <= 5; round += 1) {
 			for (int num_topic = 80; num_topic <= 80; num_topic += 20) {
-				String initialFileName = "../data/topic" + num_topic + "_snippet_200iter_initial_status.txt";
-//				String initialFileName = "../data/topic" + num_topic + "_qa_random_initial_status.txt";
 				double alpha = 1.0 * 50 / num_topic;
 				RatioGPUDMM gsdmm = new RatioGPUDMM(doc_list, num_topic, num_iter, save_step, beta, alpha, threshold);
 				gsdmm.word2idFileName = "../data/qa_word2id.txt";
@@ -739,7 +736,6 @@ public class RatioGPUDMM {
 				//here
 				gsdmm.filterSize = filterSize;
 				gsdmm.roundIndex = round;
-				gsdmm.initialFileName = initialFileName;
 				gsdmm.similarityFileName = similarityFileName;
 				gsdmm.weight = weight;
 				gsdmm.initNewModel();
